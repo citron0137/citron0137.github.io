@@ -1,86 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Card</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1em;
-        }
-
-        main {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            line-height: 1.6;
-        }
-
-        button {
-            padding: 15px 25px;
-            font-size: 18px;
-            margin: 10px;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
-            transition: background-color 0.3s ease; /* 배경색 전환 효과 */
-        }
-        span {
-            font-weight: 700;
-        }
-
-
-        #playstore {width: 32px;}
-        #appstore {width: 32px;}
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirect Example</title>
+  <!-- 5초 후 example.com으로 리디렉션 -->
+  <meta http-equiv="refresh" content="0;url=https://github.com/citron0137">
 </head>
 <body>
-    <header>
-        <h1></h1>
-    </header>
-    <main>
-        <section>
-            <h2>안녕하세요</h2>
-            <p>
-                제 이름은 <span>라도훈</span>입니다.<br/>
-                개발을 활용한 비즈니스 뿐만 아니라, 개발 자체에도 관심을 가지고 백엔드와 운영체제 등을 공부하고 있습니다.<br/>
-                저는 2022년 1월부터 2024년 6월까지 스터디워크(<span>파트타임스터디</span>)에서 <span>CTO와 백엔드 개발</span>을 맡았습니다.
-                <!-- <br/> 개발 외적으로 <span>사업과 투자</span>에 관심을 가지고 공부하고 있습니다. --> 
-            </p>
-        </section>
-        <section>
-            <h3>파트타임스터디</h3>
-            <p>
-                (24년 6월 기준) 12만 명이 넘는 유저들과 함께하는 <span>공부 챌린지 어플</span> 파트타임스터디는<br/> 
-                공부 목표를 정하고 보증금을 걸어 <span>공부 목표 달성을 도와드립니다.</span> <br/>
-                파트타임스터디는 비전 AI와 <span>카메라를 이용하여 실제 공부한 시간을 측정</span>하고 있습니다.
-            </p>
-            <img id="playstore" onclick="location.href='https://play.google.com/store/apps/details?id=com.studywork.parttimestudy&hl=ko&gl=US'" src="./playstore.png">
-            <img id="appstore" onclick="location.href='https://apps.apple.com/kr/app/%ED%8C%8C%ED%8A%B8%ED%83%80%EC%9E%84-%EC%8A%A4%ED%84%B0%EB%94%94-ai%EA%B8%B0%EB%B0%98-%EA%B3%B5%EB%B6%80-%EC%B1%8C%EB%A6%B0%EC%A7%80-%EC%95%B1/id1597693251'" src="./appstore.png">
-        </section>
-        
-        <section>
-            <h2>반갑습니다</h2>
-            <p>
-                세상에 당신의 가치를 전할 때, 제가 도움을 드릴 수 있도록 <span>성함과 연락처</span>를 보내주세요.<br/>
-            </p>
-            <a href='mailto:citron0137@gmail.com?subject=%5B%EC%97%B0%EB%9D%BD%EC%B2%98%5D%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94%21&body=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94%21%20%0A%EB%AA%85%ED%95%A8%EC%9D%84%20%EB%B0%9B%EC%95%84%20%EC%97%B0%EB%9D%BD%EC%B2%98%20%EB%B3%B4%EB%82%B4%EB%93%9C%EB%A6%BD%EB%8B%88%EB%8B%A4.%20%0A%0A%EC%9D%B4%EB%A6%84%3A%20%7B%EC%84%B1%ED%95%A8%7D%0A%EC%97%B0%EB%9D%BD%EC%B2%98%20%3A%20%7B%EC%A0%84%ED%99%94%EB%B2%88%ED%98%B8%20%EB%98%90%EB%8A%94%20%EC%9D%B4%EB%A9%94%EC%9D%BC%7D%20%0A%EC%A7%81%EC%97%85%3A%20%7B%EC%A7%81%EC%97%85%20%EB%98%90%EB%8A%94%20%ED%95%98%EC%8B%9C%EB%8A%94%20%EC%9D%BC%2C%20%EA%B4%80%EC%8B%AC%EC%9E%88%EB%8A%94%20%EC%9D%BC%7D%0A%0A%ED%96%89%EB%B3%B5%ED%95%9C%20%ED%95%98%EB%A3%A8%20%EB%B3%B4%EB%82%B4%EC%8B%9C%EA%B8%B0%20%EB%B0%94%EB%9E%8D%EB%8B%88%EB%8B%A4%21' > ✉️ 연락처 보내기</a>
-            <br/><br/>
-            <a href='tel:01092742931'>📱 연락처 저장하기</a><br/>
-            <!-- <button onclick="location.href='카카오톡_오픈채팅_링크'">카카오톡 오픈채팅으로 이동</button> -->
-        </section>
-    </main>
+  <p>페이지가 자동으로 리디렉션됩니다. 잠시만 기다려주세요...</p>
 </body>
 </html>
