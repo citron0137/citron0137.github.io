@@ -53,22 +53,22 @@
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
     <!-- Language & Theme Controls -->
-    <div class="fixed top-4 right-4 z-50 flex gap-2">
+    <div class="fixed bottom-4 right-4 z-50 flex flex-col gap-2 items-end">
+        <!-- Dark Mode Toggle -->
+        <button id="darkModeToggle" class="h-10 px-3 rounded-full bg-primary-500 text-white shadow-lg hover:bg-primary-600 transition-all duration-300 hover:scale-110 flex items-center justify-center flex-shrink-0" title="다크모드 전환 / Toggle Dark Mode">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            </svg>
+        </button>
+        
         <!-- Language Toggle -->
-        <button id="languageToggle" class="p-2 rounded-full bg-green-500 text-white shadow-lg hover:bg-green-600 transition-all duration-300 hover:scale-110 group" title="언어 변경 / Change Language">
+        <button id="languageToggle" class="h-10 px-3 rounded-full bg-green-500 text-white shadow-lg hover:bg-green-600 transition-all duration-300 hover:scale-110 group flex items-center justify-center flex-shrink-0" title="언어 변경 / Change Language">
             <div class="flex items-center gap-1">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
                 </svg>
                 <span id="currentLang" class="text-xs font-medium">KO</span>
             </div>
-        </button>
-        
-        <!-- Dark Mode Toggle -->
-        <button id="darkModeToggle" class="p-2 rounded-full bg-primary-500 text-white shadow-lg hover:bg-primary-600 transition-all duration-300 hover:scale-110" title="다크모드 전환 / Toggle Dark Mode">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-            </svg>
         </button>
     </div>
 
