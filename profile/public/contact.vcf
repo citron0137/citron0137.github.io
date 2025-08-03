@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:라도훈
+N:라;도훈;;;
+ORG:스터디워크(파트타임스터디)
+TITLE:소프트웨어 엔지니어 & 기술 리더
+EMAIL;TYPE=INTERNET;TYPE=WORK:citron0137@gmail.com
+URL;TYPE=WORK:https://github.com/citron0137
+URL;TYPE=WORK:https://open.kakao.com/me/rado
+ADR;TYPE=WORK:;;서울;서울;;대한민국
+NOTE:기민한 소프트웨어 설계와 긍정적인 조직 문화를 통해 서비스의 성장과 팀의 발전을 함께 만들어 나가는 엔지니어\n\n현재 소속:\n• 스터디워크(파트타임스터디) - 기술 리더 (2024.07~)\n\n학력 및 자격:\n• 세종대학교 정보보호학과 재학 (2019.03~)\n• 정보처리기사 (2024.06)\n• Best Of the Best 7th 보안제품개발 수료 (2018.06~2019.03)\n\n전문 영역:\n• Backend Architecture: 확장 가능한 서버 시스템 설계 및 구축\n• Full Development: 기획부터 운영까지의 전 과정\n• Technical Leadership: 개발팀을 이끄는 기술 리더십\n• DevOps & Infrastructure: 효율적인 개발 환경 및 배포 파이프라인 구축\n\n기술 스택:\n• Backend: Spring Boot, NestJS\n• Languages: Java, Kotlin, TypeScript, Python, Bash, C\n• Database: MySQL, PostgreSQL, MongoDB, Redis\n• Infrastructure: Docker, AWS, OpenStack, Linux, Nginx, Grafana\n• Architecture: Hexagonal Architecture, Microservices\n• Testing: JUnit, Integration Testing\n\n기술 총괄 경력:\n• StudyWork (파트타임스터디) 기술 총괄 & 서버 개발 (2022.01~2024.06)\n• 해프닝(팝업 스토어 정보 어플) 개발팀 기술 리더 (2020.06~2023.12)\n• BTT Project 서버개발 (BoB 7th, 2018.06~2019.03)\n\n서비스의 지속적인 성장과 팀원들의 발전을 위한 환경을 만들어갑니다. 연락 환영합니다!
+PHOTO;TYPE=JPEG:https://citron0137.github.io/public/profile.jpg
+REV:2024-12-28T00:00:00Z
+END:VCARD 

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="라도훈(citron0137)의 디지털 명함 - 소프트웨어 엔지니어 & 기술 리더 포트폴리오">
+    <meta name="keywords" content="소프트웨어엔지니어, 기술리더, 백엔드설계, 풀스택개발, 개발팀리더, 테크리드, 포트폴리오, 디지털명함">
+    <meta name="author" content="라도훈">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://citron0137.github.io/">
+    <meta property="og:title" content="라도훈 - 소프트웨어 엔지니어 & 기술 리더">
+    <meta property="og:description" content="기민한 소프트웨어 설계와 긍정적인 조직 문화를 통해 서비스의 성장과 팀의 발전을 함께 만들어 나가는 엔지니어">
+    <meta property="og:image" content="./public/profile.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://citron0137.github.io/">
+    <meta property="twitter:title" content="라도훈 - 소프트웨어 엔지니어 & 기술 리더">
+    <meta property="twitter:description" content="기민한 소프트웨어 설계와 긍정적인 조직 문화를 통해 서비스의 성장과 팀의 발전을 함께 만들어 나가는 엔지니어">
+    <meta property="twitter:image" content="./public/profile.jpg">
+
+    <title>라도훈 - 소프트웨어 엔지니어 & 기술 리더 | 디지털 명함</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>">
+    
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+    
+    <!-- TailwindCSS Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+    <!-- Dark Mode Toggle -->
+    <button id="darkModeToggle" class="fixed top-4 right-4 z-50 p-2 rounded-full bg-primary-500 text-white shadow-lg hover:bg-primary-600 transition-all duration-300 hover:scale-110">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+        </svg>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md z-40 border-b border-gray-200 dark:border-gray-700">
+        <div class="max-w-4xl mx-auto px-4 py-3">
+            <div class="flex justify-center space-x-8">
+                <a href="#hero" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-500 transition-colors">홈</a>
+                <a href="#about" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-500 transition-colors">소개</a>
+                <a href="#portfolio" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-500 transition-colors">포트폴리오</a>
+                <a href="#contact" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-500 transition-colors">연락처</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center px-4 pt-16">
+        <div class="text-center max-w-2xl mx-auto">
+            <!-- Profile Image -->
+            <div class="relative mb-8">
+                <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-primary-400 to-primary-600 p-1 shadow-xl">
+                    <img src="./public/profile.jpg" alt="라도훈 프로필" class="w-full h-full rounded-full object-cover bg-gray-200 dark:bg-gray-700">
+                </div>
+            </div>
+            
+            <!-- Name & Title -->
+            <h1 class="text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">
+                라도훈
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4">
+                소프트웨어 엔지니어 & 기술 리더
+            </p>
+            
+            <!-- Slogan -->
+            <p class="text-lg text-gray-500 dark:text-gray-400 mb-8 leading-relaxed">
+                기민한 소프트웨어 설계와 긍정적인 조직 문화를 통해<br>
+                <strong>서비스의 성장</strong>과 <strong>팀의 발전</strong>을 함께 만들어 나갑니다
+            </p>
+            
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#portfolio" class="px-8 py-3 bg-primary-500 text-white rounded-full font-medium hover:bg-primary-600 transform hover:scale-105 transition-all duration-300 shadow-lg">
+                    포트폴리오 보기
+                </a>
+                <a href="#contact" class="px-8 py-3 border-2 border-primary-500 text-primary-500 rounded-full font-medium hover:bg-primary-500 hover:text-white transition-all duration-300">
+                    연락하기
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-20 px-4 bg-gray-50 dark:bg-gray-800/50">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
+                <div class="w-20 h-1 bg-primary-500 mx-auto rounded-full"></div>
+            </div>
+            
+            <!-- About Content -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                        안녕하세요! 소프트웨어 엔지니어이자 개발팀 리더 경험을 보유한 라도훈입니다. 
+                        현재 스터디워크(파트타임스터디)에서 기술 리더를 담당하고 있습니다.
+                    </p>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                        백엔드 시스템 설계 및 구축에 특화되어 있으며, 기획부터 운영까지의 
+                        전 과정을 아우릅니다.
+                    </p>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                        여러 프로젝트에서 기술 총괄 역할을 맡아 팀을 이끈 경험을 바탕으로, 
+                        서비스의 지속적인 성장과 팀원들의 발전을 위한 환경을 만들어갑니다.
+                    </p>
+                </div>
+                
+                <!-- Skills -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">주요 기술</h3>
+                    <div class="flex flex-wrap gap-3" id="tech-stack">
+                        <!-- Primary Service Stack -->
+                        <!-- Planning & Design -->
+                        <span class="tech-item flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-900/30 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium" data-tooltip="프로젝트 초기부터 운영까지 모든 정보를 체계적으로 관리하고, 팀원들과의 소통 효율성을 극대화하기 위함">
+                            <span class="text-base">📝</span>
+                            Notion
+                        </span>
+                        
+                        <span class="tech-item flex items-center gap-2 px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium" data-tooltip="디자이너와 개발자 간의 소통 비용을 줄이고, 사용자 경험을 구체적으로 설계하여 완성도 높은 서비스를 만들기 위함">
+                            <span class="text-base">🎨</span>
+                            Figma
+                        </span>
+                        
+                        <!-- Frontend -->
+                        <span class="tech-item flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium" data-tooltip="컴포넌트 재사용성을 통한 개발 생산성 향상과 풍부한 생태계를 활용하여 빠르고 안정적인 프론트엔드 개발을 하기 위함">
+                            <span class="text-base">⚛️</span>
+                            React
+                        </span>
+                        
+                        <!-- Backend -->
+                        <span class="tech-item flex items-center gap-2 px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-medium" data-tooltip="엔터프라이즈급 서비스의 안정성과 확장성을 보장하며, 풍부한 생태계와 자동 설정을 통해 빠른 개발을 하기 위함">
+                            <span class="text-base">🌱</span>
+                            Spring Boot
+                        </span>
+                        
+                        <!-- Database -->
+                        <span class="tech-item flex items-center gap-2 px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full text-sm font-medium" data-tooltip="복잡한 비즈니스 로직과 데이터 무결성이 중요한 서비스에서 강력한 쿼리 성능과 안정성을 확보하기 위함">
+                            <span class="text-base">🐘</span>
+                            PostgreSQL
+                        </span>
+                        
+                        <!-- Cache & Session -->
+                        <span class="tech-item flex items-center gap-2 px-4 py-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-full text-sm font-medium" data-tooltip="사용자 경험 향상을 위한 응답 속도 최적화와 확장 가능한 세션 관리 시스템을 구축하기 위함">
+                            <span class="text-base">🔴</span>
+                            Redis
+                        </span>
+                        
+                        <!-- Infrastructure -->
+                        <span class="tech-item flex items-center gap-2 px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full text-sm font-medium" data-tooltip="서비스 성장에 따른 유연한 확장성과 글로벌 서비스 제공을 위한 안정적인 인프라 환경을 구축하기 위함">
+                            <span class="text-base">☁️</span>
+                            AWS
+                        </span>
+                        
+                        <!-- Container -->
+                        <span class="tech-item flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium" data-tooltip="개발 환경의 일관성 유지와 배포 프로세스 자동화를 통해 팀의 생산성과 서비스 안정성을 모두 확보하기 위함">
+                            <span class="text-base">🐳</span>
+                            Docker
+                        </span>
+                        
+                        <!-- Version Control & CI/CD -->
+                        <span class="tech-item flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-900/30 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium" data-tooltip="코드 품질 관리와 팀 협업 워크플로우 최적화, 그리고 자동화된 배포 파이프라인을 통한 안전한 서비스 운영을 하기 위함">
+                            <span class="text-base">🐙</span>
+                            GitHub
+                        </span>
+                        
+                        <!-- Monitoring & Observability -->
+                        <span class="tech-item flex items-center gap-2 px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full text-sm font-medium" data-tooltip="서비스 장애를 사전에 감지하고 빠른 대응을 통해 사용자 경험을 보호하며, 데이터 기반의 성능 개선을 하기 위함">
+                            <span class="text-base">📊</span>
+                            Grafana Family
+                        </span>
+                        
+                        <!-- Communication & Networking -->
+                        <span class="tech-item flex items-center gap-2 px-4 py-2 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 rounded-full text-sm font-medium" data-tooltip="최신 기술 트렌드를 빠르게 파악하고 팀의 기술적 성장을 촉진하며, 긍정적인 개발 문화를 조성하기 위함">
+                            <span class="text-base">👥</span>
+                            개발자 네트워킹
+                        </span>
+                    </div>
+                    
+                    <!-- Full Stack Experience (Commented) -->
+                    <!--
+                    <div class="flex flex-wrap gap-3 mt-4 opacity-60">
+                        <span class="text-xs text-gray-500 dark:text-gray-400 mb-2 w-full">전체 기술 스택 경험</span>
+                        
+                        <span class="flex items-center gap-2 px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-full text-xs font-medium">
+                            <span class="text-sm">🪺</span>
+                            NestJS
+                        </span>
+                        
+                        <span class="flex items-center gap-2 px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full text-xs font-medium">
+                            <span class="text-sm">☕</span>
+                            Java
+                        </span>
+                        <span class="flex items-center gap-2 px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-xs font-medium">
+                            <span class="text-sm">🎯</span>
+                            Kotlin
+                        </span>
+                        <span class="flex items-center gap-2 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-xs font-medium">
+                            <span class="text-sm">📘</span>
+                            TypeScript
+                        </span>
+                        <span class="flex items-center gap-2 px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 rounded-full text-xs font-medium">
+                            <span class="text-sm">🐍</span>
+                            Python
+                        </span>
+                        
+                        <span class="flex items-center gap-2 px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-xs font-medium">
+                            <span class="text-sm">🐬</span>
+                            MySQL
+                        </span>
+                        <span class="flex items-center gap-2 px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-xs font-medium">
+                            <span class="text-sm">🍃</span>
+                            MongoDB
+                        </span>
+                        <span class="flex items-center gap-2 px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-full text-xs font-medium">
+                            <span class="text-sm">🔴</span>
+                            Redis
+                        </span>
+                        
+                        <span class="flex items-center gap-2 px-3 py-1 bg-gray-100 dark:bg-gray-900/30 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium">
+                            <span class="text-sm">🐧</span>
+                            Linux
+                        </span>
+                        <span class="flex items-center gap-2 px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-xs font-medium">
+                            <span class="text-sm">⚡</span>
+                            Nginx
+                        </span>
+                    </div>
+                    -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Portfolio</h2>
+                <div class="w-20 h-1 bg-primary-500 mx-auto rounded-full"></div>
+                <p class="text-gray-600 dark:text-gray-300 mt-4">주요 프로젝트들을 소개합니다</p>
+            </div>
+            
+            <!-- Project Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
+                    <div class="h-48 bg-gradient-to-br from-blue-400 to-blue-600 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300"></div>
+                        <!-- App Icon -->
+                        <div class="relative z-10 w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                            <img src="./public/pts.webp" alt="파트타임스터디 아이콘" class="w-12 h-12 rounded-xl object-cover">
+                        </div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="px-3 py-1 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm">교육 플랫폼</span>
+                        </div>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-xl font-bold mb-3">파트타임스터디</h3>
+                        <div class="text-gray-600 dark:text-gray-300 mb-4 space-y-1">
+                            <p class="font-medium"> 개발팀 리드 (2년)</p> 
+                            <p>팀 문화 형성 • 24/7 고가용성 운영 <br>• 동시 촬영 1000+명</p>
+                        </div>
+                        <a href="https://ptstudy.oopy.io/" target="_blank" class="absolute bottom-4 right-4 text-xs text-primary-500 hover:text-primary-600 transition-colors flex items-center gap-1">
+                            서비스 보러가기
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group">
+                    <div class="h-48 bg-gradient-to-br from-orange-400 to-orange-600 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300"></div>
+                        <!-- Camp Icon -->
+                        <div class="relative z-10 w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2c2.5 0 4.5 2 4.5 4.5 0 2.5-4.5 11.5-4.5 11.5s-4.5-9-4.5-11.5C7.5 4 9.5 2 12 2zm0 6.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM5 19h14c1.1 0 2 .9 2 2s-.9 2-2 2H5c-1.1 0-2-.9-2-2s.9-2 2-2z"/>
+                            </svg>
+                        </div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="px-3 py-1 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm">사이버보안 훈련 플랫폼</span>
+                        </div>
+                    </div>
+                    <div class="p-6 relative">
+                        <h3 class="text-xl font-bold mb-3">OFFen-CAMP</h3>
+                        <div class="text-gray-600 dark:text-gray-300 mb-4 space-y-1">
+                            <p class="font-medium">테크 리드 (1년)</p>
+                            <p> OpenStack • Bare Metal • 국제화 <br>• 동시 사용자 약 100명 </p>
+                        </div>
+                        <a href="https://www.enki.co.kr/product/offencamp" class="absolute bottom-4 right-4 text-xs text-primary-500 hover:text-primary-600 transition-colors flex items-center gap-1">
+                            서비스 보러가기
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 bg-gray-50 dark:bg-gray-800/50">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Contact</h2>
+                <div class="w-20 h-1 bg-primary-500 mx-auto rounded-full"></div>
+                <p class="text-gray-600 dark:text-gray-300 mt-4">언제든지 연락주세요! 함께 멋진 프로젝트를 만들어봐요.</p>
+            </div>
+            
+            <!-- Contact Grid -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Contact Info -->
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">이메일</h3>
+                            <p class="text-gray-600 dark:text-gray-300">citron0137@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center">
+                            <svg class="w-6 h-6 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold">위치</h3>
+                            <p class="text-gray-600 dark:text-gray-300">서울, 대한민국</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="space-y-4">
+                    <a href="mailto:citron0137@gmail.com" target="_blank" class="w-full flex items-center justify-center space-x-3 p-4 bg-primary-500 text-white rounded-xl hover:bg-primary-600 transition-all duration-300 group">
+                        <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        <span class="font-medium">이메일 보내기</span>
+                    </a>
+                    
+                    <a href="https://www.linkedin.com/in/도훈-라-357b081a6" target="_blank" class="w-full flex items-center justify-center space-x-3 p-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all duration-300 group">
+                        <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                        <span class="font-medium">LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/citron0137" target="_blank" class="w-full flex items-center justify-center space-x-3 p-4 bg-gray-800 dark:bg-gray-700 text-white rounded-xl hover:bg-gray-900 dark:hover:bg-gray-600 transition-all duration-300 group">
+                        <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        <span class="font-medium">GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-4 border-t border-gray-200 dark:border-gray-700">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="text-gray-600 dark:text-gray-300">
+                © 2024 라도훈. Made with ❤️ and ☕
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="./js/script.js"></script>
+</body>
+</html> 
