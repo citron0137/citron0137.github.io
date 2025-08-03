@@ -2,11 +2,14 @@
 // 디지털 명함 - 인터랙티브 기능들
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 디지털 명함 웹사이트가 로드되었습니다!');
-    console.log('📱 모바일 최적화된 반응형 디자인');
-    console.log('🌙 다크모드 지원');
-    console.log('💼 vCard 다운로드 기능');
-    console.log('📧 연락처: citron0137@gmail.com');
+    // Wait for i18n to be available
+    setTimeout(() => {
+        console.log(window.i18n.translate('console.loaded'));
+        console.log(window.i18n.translate('console.mobile'));
+        console.log(window.i18n.translate('console.darkmode'));
+        console.log(window.i18n.translate('console.vcard'));
+        console.log(window.i18n.translate('console.email'));
+    }, 100);
 
     // Dark Mode Toggle Functionality
     const darkModeToggle = document.getElementById('darkModeToggle');
@@ -24,6 +27,36 @@ document.addEventListener('DOMContentLoaded', function() {
         updateDarkModeIcon(false);
     }
     
+    // Language Toggle Functionality
+    const languageToggle = document.getElementById('languageToggle');
+    const currentLangDisplay = document.getElementById('currentLang');
+    
+    // Initialize language display
+    function updateLanguageDisplay() {
+        const currentLang = window.i18n?.getCurrentLanguage() || 'ko';
+        currentLangDisplay.textContent = currentLang.toUpperCase();
+    }
+    
+    // Language toggle click handler
+    languageToggle.addEventListener('click', function() {
+        const currentLang = window.i18n?.getCurrentLanguage() || 'ko';
+        const newLang = currentLang === 'ko' ? 'en' : 'ko';
+        
+        // Add animation class
+        document.body.classList.add('language-switching');
+        
+        window.i18n?.setLanguage(newLang);
+        updateLanguageDisplay();
+        
+        // Remove animation class after animation completes
+        setTimeout(() => {
+            document.body.classList.remove('language-switching');
+        }, 300);
+    });
+    
+    // Initialize language display
+    updateLanguageDisplay();
+
     // Dark mode toggle click handler
     darkModeToggle.addEventListener('click', function() {
         const isDark = html.classList.contains('dark');
@@ -32,12 +65,12 @@ document.addEventListener('DOMContentLoaded', function() {
             html.classList.remove('dark');
             localStorage.setItem('theme', 'light');
             updateDarkModeIcon(false);
-            console.log('🌞 라이트 모드로 전환되었습니다.');
+            console.log(window.i18n?.translate('console.darkmode.light') || '🌞 라이트 모드로 전환되었습니다.');
         } else {
             html.classList.add('dark');
             localStorage.setItem('theme', 'dark');
             updateDarkModeIcon(true);
-            console.log('🌙 다크 모드로 전환되었습니다.');
+            console.log(window.i18n?.translate('console.darkmode.dark') || '🌙 다크 모드로 전환되었습니다.');
         }
     });
     
@@ -71,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     behavior: 'smooth'
                 });
                 
-                console.log(`📍 ${targetId} 섹션으로 스크롤됩니다.`);
+                console.log(window.i18n?.translate('console.scroll', { section: targetId }) || `📍 ${targetId} 섹션으로 스크롤됩니다.`);
             }
         });
     });
@@ -151,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
     contactButtons.forEach(button => {
         button.addEventListener('click', function() {
             const buttonText = this.querySelector('span').textContent;
-            console.log(`📞 ${buttonText} 버튼이 클릭되었습니다.`);
+            console.log(window.i18n?.translate('console.button.click', { button: buttonText }) || `📞 ${buttonText} 버튼이 클릭되었습니다.`);
         });
     });
     
@@ -159,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const vCardButton = document.querySelector('a[href="./public/contact.vcf"]');
     if (vCardButton) {
         vCardButton.addEventListener('click', function() {
-            console.log('📇 vCard가 다운로드되었습니다.');
+            console.log(window.i18n?.translate('console.vcard.download') || '📇 vCard가 다운로드되었습니다.');
             
             // Optional: Track download event
             if (typeof gtag !== 'undefined') {
@@ -180,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         img.addEventListener('error', function() {
             this.classList.remove('img-loading');
-            console.warn('⚠️ 이미지 로드에 실패했습니다:', this.src);
+            console.warn(window.i18n?.translate('console.image.error') || '⚠️ 이미지 로드에 실패했습니다:', this.src);
         });
     });
     
@@ -190,6 +223,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if ((e.ctrlKey || e.metaKey) && e.key === 'd') {
             e.preventDefault();
             darkModeToggle.click();
+        }
+        
+        // Toggle language with Ctrl/Cmd + L
+        if ((e.ctrlKey || e.metaKey) && e.key === 'l') {
+            e.preventDefault();
+            languageToggle.click();
         }
         
         // Navigate sections with arrow keys when focus is on nav
@@ -215,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 const perfData = performance.getEntriesByType('navigation')[0];
                 const loadTime = perfData.loadEventEnd - perfData.loadEventStart;
-                console.log(`⚡ 페이지 로드 시간: ${loadTime.toFixed(2)}ms`);
+                console.log(window.i18n?.translate('console.loadtime', { time: loadTime.toFixed(2) }) || `⚡ 페이지 로드 시간: ${loadTime.toFixed(2)}ms`);
             }, 100);
         });
     }
@@ -225,7 +264,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const isTablet = window.matchMedia('(min-width: 769px) and (max-width: 1024px)').matches;
     const isDesktop = window.matchMedia('(min-width: 1025px)').matches;
     
-    console.log('📱 디바이스 정보:', {
+    console.log(window.i18n?.translate('console.device') || '📱 디바이스 정보:', {
         mobile: isMobile,
         tablet: isTablet,
         desktop: isDesktop,
@@ -234,8 +273,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Online/offline status
     function updateOnlineStatus() {
-        const status = navigator.onLine ? '온라인' : '오프라인';
-        console.log(`🌐 연결 상태: ${status}`);
+        const statusKey = navigator.onLine ? 'console.connection.online' : 'console.connection.offline';
+        console.log(window.i18n?.translate(statusKey) || `🌐 연결 상태: ${navigator.onLine ? '온라인' : '오프라인'}`);
     }
     
     window.addEventListener('online', updateOnlineStatus);
@@ -243,8 +282,11 @@ document.addEventListener('DOMContentLoaded', function() {
     updateOnlineStatus();
     
     // Initialize complete message
-    console.log('✅ 모든 기능이 초기화되었습니다!');
-    console.log('💡 팁: Ctrl+D (또는 Cmd+D)로 다크모드를 토글할 수 있습니다.');
+    setTimeout(() => {
+        console.log(window.i18n?.translate('console.initialized') || '✅ 모든 기능이 초기화되었습니다!');
+        console.log(window.i18n?.translate('console.tip') || '💡 팁: Ctrl+D (또는 Cmd+D)로 다크모드를 토글할 수 있습니다.');
+        console.log('🌍 언어 전환: Ctrl+L (또는 Cmd+L) 또는 우상단 버튼 클릭');
+    }, 200);
 });
 
 // Utility functions
@@ -279,5 +321,6 @@ function copyToClipboard(text) {
 // Export for global access if needed
 window.BusinessCard = {
     copyToClipboard,
-    version: '1.0.0'
+    version: '1.0.0',
+    i18n: window.i18n
 }; 
