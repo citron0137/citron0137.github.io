@@ -73,7 +73,7 @@ const translations = {
         'meta.keywords': '소프트웨어엔지니어, 기술리더, 백엔드설계, 풀스택개발, 개발팀리더, 테크리드, 포트폴리오, 디지털명함',
         'meta.og.title': '라도훈 - 소프트웨어 엔지니어 & 기술 리더',
         'meta.og.description': '기민한 소프트웨어 설계와 긍정적인 조직 문화를 통해 서비스의 성장과 팀의 발전을 함께 만들어 나가는 엔지니어',
-        'meta.og.image': 'https://rahoon.site/profile/public/thumbnail.png',
+        'meta.og.image': 'https://rahoon.site/profile/public/thumbnail-ko.webp',
         
         // Console Messages
         'console.loaded': '🚀 디지털 명함 웹사이트가 로드되었습니다!',
@@ -165,7 +165,7 @@ const translations = {
         'meta.keywords': 'software engineer, tech leader, backend design, fullstack development, development team leader, tech lead, portfolio, digital business card',
         'meta.og.title': 'Dohoon Ra - Software Engineer & Tech Leader',
         'meta.og.description': 'An engineer who creates service growth and team development together through agile software design and positive organizational culture',
-        'meta.og.image': 'https://rahoon.site/profile/public/thumbnail.png',
+        'meta.og.image': 'https://rahoon.site/profile/public/thumbnail-en.webp',
         
         // Console Messages
         'console.loaded': '🚀 Digital business card website loaded!',
