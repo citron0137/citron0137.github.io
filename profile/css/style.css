@@ -239,7 +239,7 @@
     min-width: 200px;
     text-align: center;
     font-weight: 500;
-    white-space: normal;
+    white-space: pre-line;
     word-wrap: break-word;
     z-index: 1000;
     pointer-events: none;

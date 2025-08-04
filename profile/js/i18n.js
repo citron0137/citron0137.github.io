@@ -15,6 +15,7 @@ const translations = {
         'hero.title': '소프트웨어 엔지니어 & 기술 리더',
         'hero.slogan.line1': '기민한 소프트웨어 설계와 긍정적인 조직 문화를 통해',
         'hero.slogan.line2': '<strong>서비스의 성장</strong>과 <strong>팀의 발전</strong>을 함께 만들어 나갑니다',
+        'hero.slogan.combined': '기민한 소프트웨어 설계와 긍정적인 조직 문화를 통해\n<strong>서비스의 성장</strong>과 <strong>팀의 발전</strong>을 함께 만들어 나갑니다',
         'hero.cta.portfolio': '포트폴리오 보기',
         'hero.cta.contact': '연락하기',
         
@@ -29,8 +30,8 @@ const translations = {
         'tech.notion': '프로젝트 초기부터 운영까지 모든 정보를 체계적으로 관리하고, 팀원들과의 소통 효율성을 극대화하기 위함',
         'tech.figma': '디자이너와 개발자 간의 소통 비용을 줄이고, 사용자 경험을 구체적으로 설계하여 완성도 높은 서비스를 만들기 위함',
         'tech.react': '컴포넌트 재사용성을 통한 개발 생산성 향상과 풍부한 생태계를 활용하여 빠르고 안정적인 프론트엔드 개발을 하기 위함',
-        'tech.springboot': '엔터프라이즈급 서비스의 안정성과 확장성을 보장하며, 풍부한 생태계와 자동 설정을 통해 빠른 개발을 하기 위함',
-        'tech.postgresql': '복잡한 비즈니스 로직과 데이터 무결성이 중요한 서비스에서 강력한 쿼리 성능과 안정성을 확보하기 위함',
+        'tech.springboot': '엔터프라이즈급 서비스의 안정성과 확장성을 보장하며, 풍부한 생태계와 자동 설정을 통해 빠른 개발을 하기 위함\n 빠른 개발 또는 라이브러리 호환을 위해 nestjs, fastapi를 고려할 수 있음',
+        'tech.postgresql': '복잡한 비즈니스 로직과 데이터 무결성이 중요한 서비스에서 강력한 쿼리 성능과 안정성을 확보하기 위함\n팀원 역량에 따라 MySQL을 고려할 수 있음',
         'tech.redis': '사용자 경험 향상을 위한 응답 속도 최적화와 확장 가능한 세션 관리 시스템을 구축하기 위함',
         'tech.aws': '서비스 성장에 따른 유연한 확장성과 글로벌 서비스 제공을 위한 안정적인 인프라 환경을 구축하기 위함',
         'tech.docker': '개발 환경의 일관성 유지와 배포 프로세스 자동화를 통해 팀의 생산성과 서비스 안정성을 모두 확보하기 위함',
@@ -105,6 +106,7 @@ const translations = {
         'hero.title': 'Software Engineer & Tech Leader',
         'hero.slogan.line1': 'Through agile software design and positive organizational culture,',
         'hero.slogan.line2': 'we create <strong>service growth</strong> and <strong>team development</strong> together',
+        'hero.slogan.combined': 'Through agile software design and positive organizational culture,\nwe create <strong>service growth</strong> and <strong>team development</strong> together',
         'hero.cta.portfolio': 'View Portfolio',
         'hero.cta.contact': 'Contact Me',
         
@@ -212,13 +214,20 @@ class I18nSystem {
         }
     }
     
-    translate(key, params = {}) {
+    translate(key, params = {}, convertToHtml = true) {
         const translation = this.translations[this.currentLanguage]?.[key] || key;
         
         // Simple template string replacement
-        return Object.keys(params).reduce((text, param) => {
+        let result = Object.keys(params).reduce((text, param) => {
             return text.replace(new RegExp(`\\{\\{${param}\\}\\}`, 'g'), params[param]);
         }, translation);
+        
+        // Convert newlines to <br> tags for HTML rendering (only if convertToHtml is true)
+        if (convertToHtml) {
+            result = result.replace(/\n/g, '<br>');
+        }
+        
+        return result;
     }
     
     updateDocument() {
@@ -226,9 +235,10 @@ class I18nSystem {
         const elements = document.querySelectorAll('[data-i18n]');
         elements.forEach(element => {
             const key = element.getAttribute('data-i18n');
-            const translation = this.translate(key);
+            const isHtml = element.getAttribute('data-i18n-html') === 'true';
+            const translation = this.translate(key, {}, isHtml);
             
-            if (element.getAttribute('data-i18n-html') === 'true') {
+            if (isHtml) {
                 element.innerHTML = translation;
             } else {
                 element.textContent = translation;
@@ -240,14 +250,14 @@ class I18nSystem {
         techItems.forEach(item => {
             const techKey = item.getAttribute('data-tech');
             const tooltipKey = `tech.${techKey}`;
-            item.setAttribute('data-tooltip', this.translate(tooltipKey));
+            item.setAttribute('data-tooltip', this.translate(tooltipKey, {}, false));
         });
         
         // Update placeholder texts
         const placeholders = document.querySelectorAll('[data-i18n-placeholder]');
         placeholders.forEach(element => {
             const key = element.getAttribute('data-i18n-placeholder');
-            element.placeholder = this.translate(key);
+            element.placeholder = this.translate(key, {}, false);
         });
     }
     
@@ -257,40 +267,40 @@ class I18nSystem {
     
     updateMetaTags() {
         // Update title
-        document.title = this.translate('meta.title');
+        document.title = this.translate('meta.title', {}, false);
         
         // Update meta description
         const metaDescription = document.querySelector('meta[name="description"]');
         if (metaDescription) {
-            metaDescription.setAttribute('content', this.translate('meta.description'));
+            metaDescription.setAttribute('content', this.translate('meta.description', {}, false));
         }
         
         // Update meta keywords
         const metaKeywords = document.querySelector('meta[name="keywords"]');
         if (metaKeywords) {
-            metaKeywords.setAttribute('content', this.translate('meta.keywords'));
+            metaKeywords.setAttribute('content', this.translate('meta.keywords', {}, false));
         }
         
         // Update Open Graph tags
         const ogTitle = document.querySelector('meta[property="og:title"]');
         if (ogTitle) {
-            ogTitle.setAttribute('content', this.translate('meta.og.title'));
+            ogTitle.setAttribute('content', this.translate('meta.og.title', {}, false));
         }
         
         const ogDescription = document.querySelector('meta[property="og:description"]');
         if (ogDescription) {
-            ogDescription.setAttribute('content', this.translate('meta.og.description'));
+            ogDescription.setAttribute('content', this.translate('meta.og.description', {}, false));
         }
         
         // Update Twitter tags
         const twitterTitle = document.querySelector('meta[property="twitter:title"]');
         if (twitterTitle) {
-            twitterTitle.setAttribute('content', this.translate('meta.og.title'));
+            twitterTitle.setAttribute('content', this.translate('meta.og.title', {}, false));
         }
         
         const twitterDescription = document.querySelector('meta[property="twitter:description"]');
         if (twitterDescription) {
-            twitterDescription.setAttribute('content', this.translate('meta.og.description'));
+            twitterDescription.setAttribute('content', this.translate('meta.og.description', {}, false));
         }
     }
     
