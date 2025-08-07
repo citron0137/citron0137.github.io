@@ -62,15 +62,17 @@ const projectsData = [
 
 // Local storage keys
 const STORAGE_KEYS = {
-    THEME: 'dark_mode'
+    THEME: 'dark_mode',
+    SHOW_IDEAS: 'show_idea_projects'
 };
 
 // Global state
 let currentFilter = 'all';
 let currentSort = 'date';
+let showIdeaProjects = false;
 
 // DOM elements
-let projectGrid, filterButtons, sortButtons, emptyState, darkModeToggle, projectModal, modalClose, modalInterestBtn;
+let projectGrid, filterButtons, sortButtons, emptyState, darkModeToggle, projectModal, modalClose, modalInterestBtn, ideaToggle;
 
 // Initialize app
 document.addEventListener('DOMContentLoaded', function() {
@@ -91,6 +93,7 @@ function initializeElements() {
     projectModal = document.getElementById('projectModal');
     modalClose = document.getElementById('modalClose');
     modalInterestBtn = document.getElementById('modalInterestBtn');
+    ideaToggle = document.getElementById('ideaToggle');
 }
 
 // Load data from localStorage
@@ -99,6 +102,12 @@ function loadFromStorage() {
         const savedTheme = localStorage.getItem(STORAGE_KEYS.THEME);
         if (savedTheme === 'true') {
             document.documentElement.classList.add('dark');
+        }
+        
+        const savedShowIdeas = localStorage.getItem(STORAGE_KEYS.SHOW_IDEAS);
+        showIdeaProjects = savedShowIdeas === 'true';
+        if (ideaToggle) {
+            ideaToggle.checked = showIdeaProjects;
         }
     } catch (error) {
         console.error('Error loading from storage:', error);
@@ -109,6 +118,7 @@ function loadFromStorage() {
 function saveToStorage() {
     try {
         localStorage.setItem(STORAGE_KEYS.THEME, document.documentElement.classList.contains('dark'));
+        localStorage.setItem(STORAGE_KEYS.SHOW_IDEAS, showIdeaProjects);
     } catch (error) {
         console.error('Error saving to storage:', error);
         showToast('저장 중 오류가 발생했습니다.', 'error');
@@ -134,6 +144,9 @@ function setupEventListeners() {
     
     // Keyboard navigation
     document.addEventListener('keydown', handleKeyboardNavigation);
+    
+    // Idea toggle
+    ideaToggle?.addEventListener('change', toggleIdeaProjects);
     
     // Modal event listeners
     modalClose?.addEventListener('click', closeModal);
@@ -161,6 +174,13 @@ function toggleDarkMode() {
     } else {
         icon.setAttribute('d', 'M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z');
     }
+}
+
+// Toggle idea projects visibility
+function toggleIdeaProjects() {
+    showIdeaProjects = ideaToggle.checked;
+    saveToStorage();
+    renderProjects();
 }
 
 // Set filter
@@ -207,6 +227,11 @@ function updateSortButtons() {
 // Filter projects
 function getFilteredProjects() {
     let filtered = projectsData;
+    
+    // Apply idea projects filter
+    if (!showIdeaProjects) {
+        filtered = filtered.filter(project => project.status !== 'idea');
+    }
     
     // Apply category filter
     if (currentFilter !== 'all') {

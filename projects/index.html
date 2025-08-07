@@ -90,7 +90,7 @@
     <section class="pt-24 pb-12 px-4">
         <div class="max-w-4xl mx-auto text-center">
             <div class="text-6xl mb-6">🚀</div>
-            <h1 class="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary-600 to-primary-500 bg-clip-text text-transparent">
                 향후 프로젝트 계획
             </h1>
             <!--
@@ -113,31 +113,46 @@
     <section class="pb-20 px-4">
         <div class="max-w-6xl mx-auto">
             <!-- Filter & Sort -->
-            <div class="mb-8 flex flex-col sm:flex-row gap-4 justify-between items-center">
-                <div class="flex flex-wrap gap-2">
-                    <button class="filter-btn active px-4 py-2 rounded-full text-sm font-medium transition-all duration-300" data-filter="all">
-                        전체
-                    </button>
-                    <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300" data-filter="web">
-                        웹 서비스
-                    </button>
-                    <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300" data-filter="mobile">
-                        모바일 앱
-                    </button>
-                    <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300" data-filter="ai">
-                        AI/ML
-                    </button>
-                    <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300" data-filter="dev-tool">
-                        개발도구
-                    </button>
+            <div class="mb-8 flex flex-col gap-4">
+                <!-- Category Filters & Idea Toggle -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-between items-center">
+                    <div class="flex flex-wrap gap-2">
+                        <button class="filter-btn active px-4 py-2 rounded-full text-sm font-medium transition-all duration-300" data-filter="all">
+                            전체
+                        </button>
+                        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300" data-filter="web">
+                            웹 서비스
+                        </button>
+                        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300" data-filter="mobile">
+                            모바일 앱
+                        </button>
+                        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300" data-filter="ai">
+                            AI/ML
+                        </button>
+                        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300" data-filter="dev-tool">
+                            개발도구
+                        </button>
+                    </div>
+                    <div class="flex gap-2">
+                        <button id="sortByStatus" class="sort-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300">
+                            상태 순
+                        </button>
+                        <button id="sortByDate" class="sort-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300">
+                            최신 순
+                        </button>
+                    </div>
                 </div>
-                <div class="flex gap-2">
-                    <button id="sortByStatus" class="sort-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300">
-                        상태 순
-                    </button>
-                    <button id="sortByDate" class="sort-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300">
-                        최신 순
-                    </button>
+                
+                <!-- Idea Toggle -->
+                <div class="flex justify-center">
+                    <label class="idea-toggle-container flex items-center gap-3 cursor-pointer">
+                        <span class="text-sm font-medium text-gray-600 dark:text-gray-300">아이디어 단계 프로젝트 표시</span>
+                        <div class="idea-toggle">
+                            <input type="checkbox" id="ideaToggle" class="sr-only">
+                            <div class="idea-toggle-slider"></div>
+                        </div>
+                        <span class="text-xs text-gray-500 dark:text-gray-400">💡</span>
+                    </label>
                 </div>
             </div>
 
