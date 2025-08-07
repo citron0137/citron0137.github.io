@@ -1,6 +1,96 @@
 // Projects data
 const projectsData = [
     {
+        id: 'homelab-infrastructure',
+        title: '개인 홈랩 인프라 구축',
+        isMainProject: false,
+        summary: 'OPNsense 라우터와 Proxmox로 개인 홈 서버 환경 구축',
+        description: `개인 학습과 프로젝트 실험을 위한 홈 서버 환경을 구축하는 프로젝트입니다.
+
+**🏗️ 구성**
+• **OPNsense**: 방화벽 겸 메인 라우터
+• **Proxmox**: 가상머신 관리 플랫폼
+• **자체 호스팅**: 개인 프로젝트와 서비스들을 직접 운영
+
+**🎯 목적**
+• 클라우드 비용 절약
+• 새로운 기술 실험 환경
+• 개인 데이터 관리
+• 실무 인프라 경험
+
+**🔧 기술 스택 선택 이유**
+• **OPNsense** (vs 일반 공유기, pfSense)
+  - 기업급 방화벽 기능을 무료로 제공
+  - Nginx, VPN 등 다양한 플러그인을 GUI로 쉽게 관리
+  - 일반 공유기 대비 높은 확장성과 보안 기능
+  - pfSense보다 모던한 웹 인터페이스
+
+• **Proxmox** (vs VMware ESXi, Hyper-V, OpenStack)
+  - 오픈소스 가상화 플랫폼으로 라이선스 비용 없음
+  - VMware ESXi 대비 무료이면서 동등한 성능
+  - OpenStack 대비 설정이 간단하고 리소스 요구량 적음
+  - 웹 기반 직관적 관리 인터페이스
+  - KVM 기반으로 높은 성능과 안정성 제공`,
+        category: 'dev-tool',
+        tags: ['OPNsense', 'Proxmox', 'Networking', 'Security'],
+        icon: '🏠',
+        status: 'development',
+        createdAt: '2024-12-20',
+        estimatedDuration: '2개월',
+        targetUsers: '나와 내가 자원을 공유한 몇몇 사용자',
+        expectedImpact: '인프라 운영 경험, 클라우드 비용 절약, 개인 프로젝트 안정적 호스팅',
+        challenges: [
+            '하드웨어 선택과 초기 설정',
+            '네트워크 구성과 보안 설정',
+            '전력 사용량과 소음 관리',
+            '서비스 장애 시 복구 방법'
+        ],
+        competitors: `**왜 클라우드 시스템을 사용하지 않았는가?**
+
+클라우드 서비스(AWS, GCP, Azure 등)는 확실히 매력적인 선택지였습니다. 관리가 쉽고, 확장성이 뛰어나며, 높은 안정성을 보장합니다. 하지만 다음과 같은 이유로 홈랩을 선택했습니다:
+
+**💰 비용 문제**
+• 개인 프로젝트 여러 개를 24/7 운영하면 월 비용이 상당함
+• 실험적인 서비스들까지 포함하면 비용 부담이 큼
+• 홈랩은 초기 투자 후 전기료만 지불하면 됨
+
+**🔒 데이터 주권**
+• 개인 파일, 사진, 문서 등을 외부 서버에 맡기는 것에 대한 우려
+• 클라우드 업체의 정책 변경이나 서비스 중단 리스크
+• 완전한 데이터 통제권을 원함
+
+**📚 학습 목적**
+• 클라우드는 추상화된 서비스로 인프라의 실제 구조를 배우기 어려움
+• 네트워킹, 가상화, 보안 등을 직접 구성하며 배우고 싶음
+• 문제 발생 시 직접 해결하는 경험을 쌓고 싶음
+
+**🎛️ 커스터마이징**
+• 클라우드는 제공되는 서비스 범위 내에서만 설정 가능
+• 특수한 네트워크 구성이나 하드웨어 레벨 튜닝 불가능
+• 원하는 대로 모든 것을 자유롭게 구성하고 싶음`,
+        inspiration: '집에서 놀고 있는 서버를 활용해 직접 다양한 프로젝트들을 실제 운영 레벨까지 끌어올려보고 싶어서 시작한 인프라 구축 프로젝트',
+        relatedLinks: [
+            {
+                title: 'OPNsense 공식 문서',
+                description: '오픈소스 방화벽 솔루션 설정 가이드',
+                url: 'https://docs.opnsense.org/',
+                icon: 'docs'
+            },
+            {
+                title: 'Proxmox VE 문서',
+                description: '가상화 플랫폼 설치 및 관리 매뉴얼',
+                url: 'https://pve.proxmox.com/pve-docs/',
+                icon: 'docs'
+            },
+            {
+                title: 'r/homelab',
+                description: '홈랩 커뮤니티에서 다양한 구축 사례 확인',
+                url: 'https://www.reddit.com/r/homelab/',
+                icon: 'article'
+            }
+        ]
+    },
+    {
         id: 'life-weekly-journal',
         title: '인생 주간 기록장',
         isMainProject: false,
@@ -167,6 +257,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
     renderProjects();
     updateFilterButtons();
+    checkURLForModal();
 });
 
 // Initialize DOM elements
@@ -230,6 +321,17 @@ function setupEventListeners() {
     
     // Keyboard navigation
     document.addEventListener('keydown', handleKeyboardNavigation);
+    
+    // Browser back/forward button handling
+    window.addEventListener('popstate', function(event) {
+        if (event.state && event.state.projectId) {
+            openProjectModal(event.state.projectId);
+        } else {
+            if (!projectModal.classList.contains('hidden')) {
+                closeModal();
+            }
+        }
+    });
     
     // All projects toggle
     allProjectsToggle?.addEventListener('change', toggleAllProjects);
@@ -523,10 +625,26 @@ function showToast(message, type = 'success') {
     }, 3000);
 }
 
+// Check URL for modal parameter
+function checkURLForModal() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectId = urlParams.get('project');
+    if (projectId) {
+        setTimeout(() => {
+            openProjectModal(projectId);
+        }, 100); // 약간의 지연을 주어 DOM이 완전히 로드된 후 실행
+    }
+}
+
 // Open project modal
 function openProjectModal(projectId) {
     const project = projectsData.find(p => p.id === projectId);
     if (!project) return;
+    
+    // Update URL with project parameter
+    const newUrl = new URL(window.location);
+    newUrl.searchParams.set('project', projectId);
+    window.history.pushState({ projectId }, '', newUrl);
     
     // Populate modal content
     document.querySelector('.modal-icon').textContent = project.icon;
@@ -603,6 +721,11 @@ function openProjectModal(projectId) {
 
 // Close project modal
 function closeModal() {
+    // Remove project parameter from URL
+    const newUrl = new URL(window.location);
+    newUrl.searchParams.delete('project');
+    window.history.pushState({}, '', newUrl);
+    
     projectModal.classList.remove('show');
     setTimeout(() => {
         projectModal.classList.add('hidden');
