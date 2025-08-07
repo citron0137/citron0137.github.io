@@ -26,6 +26,19 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>">
     
+    <!-- Dark Mode Prevention Script (No FOUC) -->
+    <script>
+        (function() {
+            // 즉시 다크모드 상태를 확인하고 적용 (깜박임 방지)
+            const savedTheme = localStorage.getItem('theme');
+            const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && systemPreference)) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+    
     <!-- TailwindCSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -60,7 +73,11 @@
 
   gtag('config', 'G-3PCKW1WMCV');
 </script>
-<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300" style="visibility: hidden;">
+    <script>
+        // 즉시 body 표시 (다크모드 적용 후)
+        document.body.style.visibility = 'visible';
+    </script>
     <!-- Language & Theme Controls -->
     <div class="fixed bottom-4 right-4 z-50 flex flex-col gap-2 items-end">
         <!-- Dark Mode Toggle -->
@@ -350,14 +367,16 @@
             </div>
             
             <!-- Projects Button -->
+            <!-- 
             <div class="text-center mt-12">
                 <a href="../projects/" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50">
-                    <span>프로젝트 포트폴리오 보기</span>
+                    <span data-i18n="portfolio.more_projects" data-i18n-html="true">더 많은 프로젝트 보러가기</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                     </svg>
                 </a>
             </div>
+            -->
         </div>
     </section>
 

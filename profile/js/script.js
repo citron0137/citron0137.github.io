@@ -15,17 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const darkModeToggle = document.getElementById('darkModeToggle');
     const html = document.documentElement;
     
-    // Check for saved theme preference or default to light mode
-    const savedTheme = localStorage.getItem('theme');
-    const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark' || (!savedTheme && systemPreference)) {
-        html.classList.add('dark');
-        updateDarkModeIcon(true);
-    } else {
-        html.classList.remove('dark');
-        updateDarkModeIcon(false);
-    }
+    // 다크모드 상태는 이미 head에서 설정됨 - 아이콘만 업데이트
+    const isDarkMode = html.classList.contains('dark');
+    updateDarkModeIcon(isDarkMode);
     
     // Language Toggle Functionality
     const languageToggle = document.getElementById('languageToggle');
