@@ -366,17 +366,7 @@
                 </div>
             </div>
             
-            <!-- Projects Button -->
-            <!-- 
-            <div class="text-center mt-12">
-                <a href="../projects/" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800/50">
-                    <span data-i18n="portfolio.more_projects" data-i18n-html="true">더 많은 프로젝트 보러가기</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                    </svg>
-                </a>
-            </div>
-            -->
+
         </div>
     </section>
 
@@ -454,8 +444,71 @@
         </div>
     </footer>
 
+    <!-- Hidden Admin Button -->
+    <div id="hiddenAdminBtn" class="fixed bottom-4 left-4 z-50 opacity-0 invisible transition-all duration-300">
+        <button class="h-10 px-4 rounded-full bg-red-500 text-white text-sm shadow-lg hover:bg-red-600 transition-all duration-300" onclick="window.open('https://www.notion.so/24883cc0aabf8092a4e6f587101bbb98', '_blank')">
+            🔧 관리
+        </button>
+    </div>
+
     <!-- JavaScript -->
     <script src="./js/i18n.js"></script>
     <script src="./js/script.js"></script>
+    
+    <!-- Hidden Admin Access Script -->
+    <script>
+    // PC: Ctrl + Shift + A 키 조합
+    // 모바일: 프로필 이미지를 5번 연속 탭
+    let tapCount = 0;
+    let tapTimer = null;
+    
+    function showAdminButton() {
+        const adminBtn = document.getElementById('hiddenAdminBtn');
+        adminBtn.classList.remove('opacity-0', 'invisible');
+        adminBtn.classList.add('opacity-100', 'visible');
+        
+        // 5초 후 자동으로 숨김
+        setTimeout(() => {
+            adminBtn.classList.add('opacity-0', 'invisible');
+            adminBtn.classList.remove('opacity-100', 'visible');
+        }, 5000);
+    }
+    
+    // PC: 키보드 단축키
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+            e.preventDefault();
+            showAdminButton();
+        }
+    });
+    
+    // 모바일: 프로필 이미지 5번 탭
+    const profileImg = document.querySelector('img[alt="라도훈 프로필"]');
+    if (profileImg) {
+        profileImg.addEventListener('click', function(e) {
+            e.preventDefault();
+            tapCount++;
+            
+            // 첫 번째 탭이면 타이머 시작
+            if (tapCount === 1) {
+                tapTimer = setTimeout(() => {
+                    tapCount = 0; // 2초 내에 5번 탭하지 못하면 리셋
+                }, 2000);
+            }
+            
+            // 5번 탭하면 관리 버튼 표시
+            if (tapCount >= 5) {
+                clearTimeout(tapTimer);
+                tapCount = 0;
+                showAdminButton();
+                
+                // 진동 피드백 (지원하는 디바이스에서)
+                if (navigator.vibrate) {
+                    navigator.vibrate([100, 50, 100]);
+                }
+            }
+        });
+    }
+    </script>
 </body>
 </html> 
