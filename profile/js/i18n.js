@@ -53,6 +53,10 @@ const translations = {
         'portfolio.offencamp.role': '테크 리드 (1년)',
         'portfolio.offencamp.description': 'OpenStack • Bare Metal • 국제화<br>• 동시 사용자 약 100명',
         'portfolio.offencamp.link': '서비스 보러가기',
+        'portfolio.liveytqueue.title': 'LiveYTQueue',
+        'portfolio.liveytqueue.category': '실시간 협업 플레이리스트',
+        'portfolio.liveytqueue.description': '만들면서 바로 듣는 실시간 협업 플레이리스트',
+        'portfolio.liveytqueue.link': '서비스 보러가기',
         'portfolio.more_projects': '더 많은 프로젝트 보러가기',
         
         // Contact Section
@@ -146,6 +150,10 @@ const translations = {
         'portfolio.offencamp.role': 'Tech Lead (1 year)',
         'portfolio.offencamp.description': 'OpenStack • Bare Metal • Internationalization<br>• ~100 concurrent users',
         'portfolio.offencamp.link': 'View Service',
+        'portfolio.liveytqueue.title': 'LiveYTQueue',
+        'portfolio.liveytqueue.category': 'Realtime Collaborative Playlist',
+        'portfolio.liveytqueue.description': 'Build and listen together in real time',
+        'portfolio.liveytqueue.link': 'Open Service',
         'portfolio.more_projects': 'View More Projects',
         
         // Contact Section
