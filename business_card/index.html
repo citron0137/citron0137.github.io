@@ -1,11 +1,258 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Redirect Example</title>
-  <!-- 5초 후 example.com으로 리디렉션 -->
-  <meta http-equiv="refresh" content="0;url=https://citron0137.github.io/profile">
+  <title>Rado Hun - Business Card</title>
+  <meta http-equiv="refresh" content="5;url=https://citron0137.github.io/profile">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #1e3c72 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 6s ease infinite;
+      color: white;
+      overflow: hidden;
+    }
+    
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .business-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      animation: cardAppear 1s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .business-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      animation: shimmer 3s infinite;
+    }
+    
+    @keyframes cardAppear {
+      from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+    
+    .logo {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(45deg, #fff, #f0f0f0);
+      border-radius: 50%;
+      margin: 0 auto 1.5rem auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #1e3c72;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      animation: logoFloat 3s ease-in-out infinite;
+    }
+    
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .name {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(45deg, #fff, #e8f4fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+    
+    .title {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+    
+    .spinner-container {
+      position: relative;
+      margin: 0 auto 1.5rem auto;
+      width: 50px;
+      height: 50px;
+    }
+    
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      border-top: 3px solid #fff;
+      border-right: 3px solid rgba(255, 255, 255, 0.6);
+      animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+      position: relative;
+    }
+    
+    .spinner::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 15px;
+      height: 15px;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
+      50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.8; }
+    }
+    
+    .message {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+    
+    .dots {
+      display: inline-block;
+      animation: dots 1.5s infinite;
+    }
+    
+    @keyframes dots {
+      0%, 20% { content: ''; }
+      40% { content: '.'; }
+      60% { content: '..'; }
+      80%, 100% { content: '...'; }
+    }
+    
+    .dots::after {
+      content: '';
+      animation: dots 1.5s infinite;
+    }
+    
+    .progress-container {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+    
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.8));
+      border-radius: 2px;
+      width: 0%;
+      transition: width 1s linear;
+    }
+    
+    .contact-info {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    .countdown {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-top: 0.5rem;
+    }
+    
+    .language-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      color: white;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    
+    .language-toggle:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    .language-toggle:active {
+      transform: translateY(0);
+    }
+    
+    @media (max-width: 480px) {
+      .business-card {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+      }
+      
+      .name {
+        font-size: 1.5rem;
+      }
+      
+      .title {
+        font-size: 0.9rem;
+      }
+      
+      .logo {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3PCKW1WMCV"></script>
@@ -17,7 +264,92 @@
   gtag('config', 'G-3PCKW1WMCV');
 </script>
 <body>
-  <p>페이지가 자동으로 리디렉션됩니다. 잠시만 기다려주세요...</p>
+  <div class="business-card">
+    <button class="language-toggle" onclick="toggleLanguage()">
+      <span id="lang-toggle-text">EN</span>
+    </button>
+    
+    <div class="logo">라</div>
+    <h1 class="name" data-ko="라도훈" data-en="Rado Hun">라도훈</h1>
+    <p class="title" data-ko="개발자 & 크리에이터" data-en="Developer & Creator">개발자 & 크리에이터</p>
+    
+    <div class="spinner-container">
+      <div class="spinner"></div>
+    </div>
+    
+    <p class="message">
+      <span data-ko="프로필 페이지로 이동 중" data-en="Redirecting to profile page">프로필 페이지로 이동 중</span>
+      <span class="dots"></span>
+    </p>
+    
+    <div class="progress-container">
+      <div class="progress-bar"></div>
+    </div>
+    
+    <div class="contact-info">
+      <p data-ko="잠시만 기다려주세요" data-en="Please wait a moment">잠시만 기다려주세요</p>
+      <div class="countdown">
+        <span data-ko="자동 이동까지" data-en="Auto redirect in">자동 이동까지</span>
+        <span id="countdown-timer">5</span>
+        <span data-ko="초" data-en="s">초</span>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    let currentLanguage = 'ko';
+    let countdown = 5;
+    
+    function toggleLanguage() {
+      currentLanguage = currentLanguage === 'ko' ? 'en' : 'ko';
+      updateLanguage();
+    }
+    
+    function updateLanguage() {
+      const elements = document.querySelectorAll('[data-ko][data-en]');
+      const toggleText = document.getElementById('lang-toggle-text');
+      
+      elements.forEach(element => {
+        element.textContent = element.getAttribute(`data-${currentLanguage}`);
+      });
+      
+      toggleText.textContent = currentLanguage === 'ko' ? 'EN' : '한';
+    }
+    
+    // 브라우저 언어 감지
+    function detectLanguage() {
+      const browserLang = navigator.language || navigator.userLanguage;
+      if (browserLang.startsWith('en')) {
+        currentLanguage = 'en';
+        updateLanguage();
+      }
+    }
+    
+    // 카운트다운 함수
+    function startCountdown() {
+      const countdownElement = document.getElementById('countdown-timer');
+      const progressBar = document.querySelector('.progress-bar');
+      const totalTime = 5;
+      
+      const timer = setInterval(() => {
+        countdown--;
+        countdownElement.textContent = countdown;
+        
+        // 프로그래스바 업데이트 (0%에서 100%까지)
+        const progress = ((totalTime - countdown) / totalTime) * 100;
+        progressBar.style.width = progress + '%';
+        
+        if (countdown <= 0) {
+          clearInterval(timer);
+          window.location.href = 'https://citron0137.github.io/profile';
+        }
+      }, 1000);
+    }
+    
+    // 페이지 로드 시 언어 감지 및 카운트다운 시작
+    detectLanguage();
+    startCountdown();
+  </script>
 </body>
 </html>
 
